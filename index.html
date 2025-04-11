@@ -1,0 +1,65 @@
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+
+export default function WeddingInvite() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Спасибо за подтверждение! ❤️");
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-sky-100 text-black px-4 py-8 font-sans">
+      <div className="max-w-3xl mx-auto space-y-10">
+        <header className="text-center">
+          <h1 className="text-4xl font-bold">Владислав & Кристина</h1>
+          <p className="text-lg mt-2">Свадьба — 5 сентября 2025, Тамбов</p>
+          <p className="text-sm">Банкетный зал «Посейдон»</p>
+        </header>
+
+        <section className="text-center">
+          <h2 className="text-2xl font-semibold mb-2">Дресс-код</h2>
+          <p className="mb-4">Пожалуйста, поддержите нашу морскую тему в чёрно-белых тонах ✨</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <img src="/dresscode1.jpg" alt="dress 1" className="rounded-2xl shadow" />
+            <img src="/dresscode2.jpg" alt="dress 2" className="rounded-2xl shadow" />
+            <img src="/dresscode3.jpg" alt="dress 3" className="rounded-2xl shadow" />
+          </div>
+        </section>
+
+        <section className="text-center">
+          <h2 className="text-2xl font-semibold mb-2">Тайминг</h2>
+          <ul className="space-y-2">
+            <li>15:00 — Сбор гостей</li>
+            <li>16:00 — Церемония</li>
+            <li>17:00 — Фотосессия и фуршет</li>
+            <li>18:00 — Начало банкета</li>
+            <li>21:00 — Танцы, торт и веселье 🎉</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-center mb-4">RSVP</h2>
+          <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+            <Input name="name" placeholder="Ваше имя" value={form.name} onChange={handleChange} required />
+            <Input name="email" placeholder="Email" type="email" value={form.email} onChange={handleChange} required />
+            <Textarea name="message" placeholder="Сообщение (необязательно)" value={form.message} onChange={handleChange} />
+            <Button type="submit" className="w-full">Подтвердить участие</Button>
+          </form>
+        </section>
+
+        <footer className="text-center text-sm pt-10 border-t">
+          <p>Будем рады разделить с Вами наш день 🤍</p>
+        </footer>
+      </div>
+    </div>
+  );
+} 
